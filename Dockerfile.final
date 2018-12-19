@@ -1,0 +1,1 @@
+FROM nhoriguchi/circleci/gometalinter

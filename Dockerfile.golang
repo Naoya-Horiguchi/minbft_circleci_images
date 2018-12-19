@@ -1,0 +1,5 @@
+FROM nhoriguchi/circleci/base
+
+RUN GO_URL="https://dl.google.com/go/go1.10.4.linux-amd64.tar.gz" \
+  && curl $GO_URL | sudo tar -C /usr/local -xzf -
+COPY go.sh /etc/profile.d/

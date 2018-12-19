@@ -1,0 +1,7 @@
+FROM nhoriguchi/circleci/sgx
+
+COPY install_latest_gometalinter.sh /tmp/install_latest_gometalinter.sh
+RUN sudo apt-get install -y jq \
+  && bash /tmp/install_latest_gometalinter.sh
+
+COPY gometalinter.sh /etc/profile.d

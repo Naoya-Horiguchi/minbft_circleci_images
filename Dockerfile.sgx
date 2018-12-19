@@ -1,0 +1,11 @@
+FROM nhoriguchi/circleci/golang
+
+RUN SGX_SDK_URL="https://download.01.org/intel-sgx/linux-2.3.1/ubuntu18.04/sgx_linux_x64_sdk_2.3.101.46683.bin" \
+  && sudo apt-get install -y \
+    build-essential \
+    python \
+  && curl $SGX_SDK_URL -o /tmp/sgx_linux_x64_sdk.bin \
+  && chmod +x /tmp/sgx_linux_x64_sdk.bin \
+  && echo -e "no\n/opt/intel" | sudo /tmp/sgx_linux_x64_sdk.bin \
+  && rm -f /tmp/sgx_linux_x64_sdk.bin \
+  && sudo ln -s /opt/intel/sgxsdk/environment /etc/profile.d/intel-sgxsdk.sh
